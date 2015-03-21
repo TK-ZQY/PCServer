@@ -1,0 +1,48 @@
+﻿生成启动时间为 2013/9/17 星期二 11:30:52。
+     1>项目“D:\VS-2010-Projects\PCServer\PCServer\PCServer.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Debug\PCServer.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         E:\Visual Studio 2010\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D HAVE_CONFIG_H /D PCRE_STATIC /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\PCServer.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt PCServerDlg.cpp
+         PCServerDlg.cpp
+     1>d:\vs-2010-projects\pcserver\pcserver\pcserverdlg.cpp(314): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>d:\vs-2010-projects\pcserver\pcserver\pcserverdlg.cpp(320): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>d:\vs-2010-projects\pcserver\pcserver\pcserverdlg.cpp(322): warning C4244: “参数”: 从“float”转换到“DWORD”，可能丢失数据
+     1>d:\vs-2010-projects\pcserver\pcserver\pcserverdlg.cpp(322): warning C4244: “参数”: 从“float”转换到“DWORD”，可能丢失数据
+     1>d:\vs-2010-projects\pcserver\pcserver\pcserverdlg.cpp(325): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>d:\vs-2010-projects\pcserver\pcserver\pcserverdlg.cpp(328): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>d:\vs-2010-projects\pcserver\pcserver\pcserverdlg.cpp(351): warning C4244: “参数”: 从“float”转换到“DWORD”，可能丢失数据
+     1>d:\vs-2010-projects\pcserver\pcserver\pcserverdlg.cpp(351): warning C4244: “参数”: 从“float”转换到“DWORD”，可能丢失数据
+     1>d:\vs-2010-projects\pcserver\pcserver\pcserverdlg.cpp(374): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>d:\vs-2010-projects\pcserver\pcserver\pcserverdlg.cpp(380): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>d:\vs-2010-projects\pcserver\pcserver\pcserverdlg.cpp(382): warning C4244: “参数”: 从“float”转换到“DWORD”，可能丢失数据
+     1>d:\vs-2010-projects\pcserver\pcserver\pcserverdlg.cpp(382): warning C4244: “参数”: 从“float”转换到“DWORD”，可能丢失数据
+     1>d:\vs-2010-projects\pcserver\pcserver\pcserverdlg.cpp(385): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>d:\vs-2010-projects\pcserver\pcserver\pcserverdlg.cpp(388): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>d:\vs-2010-projects\pcserver\pcserver\pcserverdlg.cpp(392): warning C4244: “参数”: 从“float”转换到“DWORD”，可能丢失数据
+     1>d:\vs-2010-projects\pcserver\pcserver\pcserverdlg.cpp(392): warning C4244: “参数”: 从“float”转换到“DWORD”，可能丢失数据
+       ResourceCompile:
+         所有输出均为最新。
+       ManifestResourceCompile:
+         所有输出均为最新。
+       Link:
+         E:\Visual Studio 2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\VS-2010-Projects\PCServer\Debug\PCServer.exe" /INCREMENTAL /NOLOGO /MANIFEST /ManifestFile:"Debug\PCServer.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\VS-2010-Projects\PCServer\Debug\PCServer.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\VS-2010-Projects\PCServer\Debug\PCServer.lib" /MACHINE:X86 Debug\PCServer.res
+         Debug\PCServer.exe.embed.manifest.res
+         Debug\PCServer.obj
+         Debug\PCServerDlg.obj
+         Debug\stdafx.obj
+       Manifest:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\PCServer.exe.embed.manifest" /manifest Debug\PCServer.exe.intermediate.manifest "E:\Visual Studio 2010\VC\Include\Manifest\dpiaware.manifest"
+         所有输出均为最新。
+       LinkEmbedManifest:
+         所有输出均为最新。
+         PCServer.vcxproj -> D:\VS-2010-Projects\PCServer\Debug\PCServer.exe
+       FinalizeBuildStatus:
+         正在删除文件“Debug\PCServer.unsuccessfulbuild”。
+         正在对“Debug\PCServer.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“D:\VS-2010-Projects\PCServer\PCServer\PCServer.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.08
