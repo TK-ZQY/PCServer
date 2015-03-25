@@ -13,6 +13,7 @@
 #endif
 
 #define ID_MENU 1010
+#define ID_MENU_CANCEL 1011
 #define WM_SHOWTASK (WM_USER + 755)
 #define SOCKET_PORT 8888 //约定用8888端口通讯
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~globle~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -578,9 +579,9 @@ LRESULT CPCServerDlg::OnShowTask(WPARAM wParam, LPARAM lParam)
 		CString s("关闭");
 		menu.AppendMenu(MF_STRING, ID_MENU, s);
 		menu.TrackPopupMenu(TPM_LEFTALIGN, lpoint->x, lpoint->y, this);
-		HMENU hmenu = menu.Detach();
-		menu.DestroyMenu();
-		delete lpoint;
+		//HMENU hmenu = menu.Detach();
+	//	menu.DestroyMenu();
+		//delete lpoint;
 	}
 	break;
 	case WM_LBUTTONDOWN:                                 // 双击左键的处理
@@ -606,6 +607,7 @@ void CPCServerDlg::OnClose()
 		if (MessageBox((CString)"温馨提示！确定关闭?", (CString)"提示", MB_YESNO) == IDNO)
 			return;
 	}
+	Shell_NotifyIcon(NIM_DELETE, &m_nid);
 	CDialogEx::OnClose();
 }
 
@@ -623,11 +625,11 @@ void CPCServerDlg::OnChangmenuitem()
 		if (MessageBox((CString)"温馨提示！确定关闭?", (CString)"提示", MB_YESNO) == IDNO)
 			return;
 	}
+	Shell_NotifyIcon(NIM_DELETE, &m_nid);
 	this->DestroyWindow();
 	// 这里写你要如何处理的代码     
 
 }
-
 
 
 void CPCServerDlg::OnBnClickedButton1()
