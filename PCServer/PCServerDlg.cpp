@@ -266,23 +266,31 @@ BOOL InItServerSock(CPCServerDlg* pp)
 
 	return TRUE;
 }
-BOOL waiteAccept(CPCServerDlg *pp)
+BOOL waitAccept(CPCServerDlg *pp)
 {
 	//ACCEPT
 	int len = sizeof(dstclient_addr);
 	connectSock = accept(ServerSock, (struct sockaddr far *)&dstclient_addr, &len); //失败返回-1
-	if (connectSock == -1)
+	if (connectSock<0)
 	{
 		closesocket(connectSock);
 		connectSock = -1;
-		return FALSE;
+		return false;
 	}
 	conStatus = true;
 	CString tp = NULL;
-	tp.Format(L"%s:%d 已连接!", (CString)(inet_ntoa(dstclient_addr.sin_addr)), dstclient_addr.sin_port);//remoteSockAddr->sa_data
+	/*可能多线程上下文切换原因，台式机上一段时间不连接Server,
+	*即使accept失败仍,会有一个127.0.0.1连接到它。调试效果和运行不同
+	*下面是一个临时的解决方法
+	*/
+	if (CString(inet_ntoa(dstclient_addr.sin_addr)).Compare((CString)"127.0.0.1") == 0)
+		return false;
+	if (connectSock == -1)
+		return false;
+	tp.Format(L"%d %s:%d 已连接!", connectSock,CString(inet_ntoa(dstclient_addr.sin_addr)), dstclient_addr.sin_port);//remoteSockAddr->sa_data
 
 	pp->SetDlgItemText(IDC_STATIC_CMD, tp);
-	return TRUE;
+	return true;
 }
 char *stringToChar(CString temp)
 {
@@ -455,12 +463,11 @@ DWORD WINAPI CPCServerDlg::threadFunc(LPVOID threadNum)
 {
 	SYSTEMTIME st;
 	CPCServerDlg *pp = (CPCServerDlg*)threadNum;
-	int length;
+	
 	CString editStr;
 	if (!InItServerSock(pp))
 		return 0;
-	if (!waiteAccept(pp))
-		return 0;
+	while (!waitAccept(pp));
 	//等待连接的时候，连接可能被取消。
 	if (!ThreadRun)
 	{
@@ -470,6 +477,7 @@ DWORD WINAPI CPCServerDlg::threadFunc(LPVOID threadNum)
 	}
 	while (ThreadRun)
 	{
+		int length = -1;
 		length = recv(connectSock, (char*)recv_message_server, sizeof(recv_message_server), 0);
 		if (length>0)
 		{
@@ -499,7 +507,7 @@ DWORD WINAPI CPCServerDlg::threadFunc(LPVOID threadNum)
 		{
 			conStatus = false;
 			pp->SetDlgItemText(IDC_STATIC_CMD, (CString)"通讯中断");
-			waiteAccept(pp);
+			while (!waitAccept(pp));
 		}
 	}
 	return 0;
@@ -539,6 +547,7 @@ void CPCServerDlg::OnBnClickedBtnStart()
 		SetDlgItemText(IDC_STATIC_CMD, (CString)"未连接");
 		SetDlgItemText(ID_BTN_START, (CString)"开启服务");
 		SetDlgItemText(IDC_EDIT_TEST, (CString)"");
+		conStatus = false;
 		this->Invalidate();
 	}
 
